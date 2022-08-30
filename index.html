@@ -20,13 +20,27 @@
                 name: 'Ryu',
                 age: 35,
             }
+            handleChange =(e) => {
+                this.setState({
+                    name: e.target.value
+                })
+
+            };
+
+            handleSubmit = (e) => {
+
+                //prevent defualt action for the page
+                e.preventDefault();
+                console.log("Form Submitted: ", this.state.name);
+
+            };
+
             handleClick = (e) =>{
                 //console.log("EVENT ", e.target);
                 console.log(this.state);
 
                 this.setState({
                     name: "Joel",
-
                 });
             }
 
@@ -40,19 +54,27 @@
             }
             render(){
                 return (
+
                     <div className="app-content">
-                        <h1>Hey, Ninjas</h1>
-                        
-                        <p>My name is: {this.state.name} and I am {this.state.age} years old.</p>
-                        <button onClick={this.handleClick}>Click Me</button>
-                        <button onMouseOver={this.handleMouseHover}>Hover Me</button>
-                        <p onCopy={this.handleOnCopy}>What we thick, we become</p>
+                        <h1>My name is: {this.state.name} and I am {this.state.age} years old.</h1>
+                        <form onSubmit={this.handleSubmit}>
+                            <input type="text" onChange={this.handleChange}/>
+                            <button>Submit</button>
+                        </form>
                     </div>
+                    // <div className="app-content">
+                    //     <h1>Hey, Ninjas</h1>
+                        
+                    //     <p>My name is: {this.state.name} and I am {this.state.age} years old.</p>
+                    //     <button onClick={this.handleClick}>Click Me</button>
+                    //     <button onMouseOver={this.handleMouseHover}>Hover Me</button>
+                    //     <p onCopy={this.handleOnCopy}>What we thick, we become</p>
+                    // </div>
                 )
             }
         }
 
-        //Renders the element to the DOM
+        // Renders the element to the DOM
         ReactDOM.render(<App />,  document.getElementById('app'));
     </script>
     
