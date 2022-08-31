@@ -18,20 +18,6 @@ const Ninjas = (props) => {
                 {ninjaList}
             </div>
         )
-        // return (
-        //     <div className="ninjas">
-
-        //         <div>Name: {name}</div>
-        //         <div>Age: {age}</div>
-        //         <div>Belt: {belt}</div>
-
-        //         {/* <div>Name: {this.props.name}</div>
-        //         <div>Age: {this.props.age}</div>
-        //         <div>Belt: {this.props.belt}</div> */}
-        //     </div>
-
-        // );
-    
 }
 
 export default Ninjas;
