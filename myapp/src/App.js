@@ -18,6 +18,13 @@ class  App extends Component {
     console.log("NINJA OBJECT: ", ninja);
 
     ninja.id = Math.random();
+
+    //We cant alter the state directly, hence we get the new data
+    //NB: array.push() alter the state of array. We dont need to alter the state of array directly
+    //like this.ninjas.push(ninja);
+
+    //The correct way is to get a copy of the array, use spread operator to add the data and the setState
+    //We add the element to the copied array
     let newNinjas = [...this.state.ninjas, ninja];
     this.setState({
       ninjas: newNinjas
