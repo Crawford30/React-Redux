@@ -50,6 +50,20 @@ class  App extends Component {
   }
 
 
+  componentDidMount() {
+
+    //fire when the component first mount to the DOM
+    console.log('MOUNTED COMPONENT');
+
+  }
+
+  componentDidUpdate(prevProps, prevState){
+    //this fires when we get a chnage iin prop or state
+    console.log('Component Updated');
+
+    console.log(prevProps, prevState); //props and state before the data was updated
+
+  }
   render() {
     return (
       <div className="App">
