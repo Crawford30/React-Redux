@@ -12,6 +12,11 @@ class  App extends Component {
       {name: 'Okoth', age: 6, belt: 'green', id: 5},
     ]
   }
+
+  addNinja = (ninja) => {
+    console.log("NINJA OBJECT: ", ninja);
+
+  } 
   render() {
     return (
       <div className="App">
@@ -19,7 +24,9 @@ class  App extends Component {
         <p>Welcome</p>
         {/* <Ninjas name="Joel" age="13" belt="black"></Ninjas> */}
         <Ninjas ninjas={this.state.ninjas}></Ninjas>
-        <AddNinja/>
+
+          {/*Send the addNinja function as prop to addNinja component */}
+        <AddNinja addNinja={this.addNinja}/>  
       </div>
     );
 
