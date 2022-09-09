@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
+import { Button } from 'reactstrap';
 import Ninjas from './Ninjas';
 import AddNinja from './AddNinja';
+import AddMoal from './AddModal';
 
 class  App extends Component {
   state = {
@@ -74,6 +76,7 @@ class  App extends Component {
 
           {/*Send the addNinja function as prop to addNinja component */}
         <AddNinja addNinja={this.addNinja} />  
+        <AddMoal/>
       </div>
     );
 
