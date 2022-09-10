@@ -12,9 +12,12 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
+
           <Navbar />
           {/* we want to load the rout here */}
           {/* <Route path='/' component={Home} /> */}
+
+
 
           <Routes>
             <Route exact path="/" element={<Home />}>
@@ -29,9 +32,10 @@ class App extends Component {
             {/* <Route path="/:post_id([1-9][0-9]*)" element={<SinglePost />}></Route> */}
 
             <Route path="/:post_id" element={<SinglePost />}></Route>
-
-
           </Routes>
+
+
+
 
         </div>
       </BrowserRouter>
