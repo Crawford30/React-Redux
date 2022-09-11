@@ -4,6 +4,9 @@ import axios from 'axios';
 //connect component to redux
 import { connect } from 'react-redux';
 
+//import the deletepost function 
+import { deletePost } from '../actions/postActions';
+
 
 class SinglePost extends Component {
 
@@ -92,9 +95,16 @@ const mapDispatchToProps = (dispatch) => {
 
     return {
         //we send the delete action and dispatch an action
-        deletePost: (id) => { ///the deletePost will be attached to our props to be used in the component
-            dispatch({ type: 'DELETE_POST', id: id })
-        }
+        // deletePost: (id) => { ///the deletePost will be attached to our props to be used in the component
+
+        //     //When we are dispatching an action here, its being created directly
+        //     // dispatch({ type: 'DELETE_POST', id: id })
+
+        //     //we use the imported function to delete post
+        //     dispatch({ type: 'DELETE_POST', id: id })
+        // }
+
+        deletePost: (id) => { dispatch(deletePost(id)) }
     }
 
 
