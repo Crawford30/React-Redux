@@ -7,6 +7,21 @@ const initState = {
 }
 
 const rootReducer = (state = initState, action) => {
+    console.log(action);
+    //CHECK THE THE TYPE OF ACTION
+    if (action.type === "DELETE_POST") {
+        //we update thw state, BUT we dont want to do anything destructive, we use the filter method
+        let newPosts = state.posts.filter(post => {
+            return action.id !== post.id
+        });
+
+        //we return a new object which represent the new state
+        return {
+            ...state,
+            posts: newPosts
+        }
+
+    }
     return state;
 }
 

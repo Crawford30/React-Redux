@@ -6,6 +6,14 @@ import { connect } from 'react-redux';
 
 
 class SinglePost extends Component {
+
+    handleClick = () => {
+        //This will go to the root reducer
+        this.props.deletePost(this.props.post.id);
+
+        //we need to redirect the user
+        this.props.history.push('/');
+    }
     // state = {
     //     post: null
     // }
@@ -29,6 +37,8 @@ class SinglePost extends Component {
     // }
 
     render() {
+
+        console.log("PROPS OS DELETE: ", this.props);
         // const post = this.state.post ? (
 
         const post = this.props.post ? (
@@ -38,6 +48,12 @@ class SinglePost extends Component {
 
                 <h4 className="center">{this.props.post.title}</h4>
                 <p>{this.props.post.body}</p>
+
+                <div className="center">
+                    <button className="btn grey" onClick={this.handleClick}>
+                        Delete Post
+                    </button>
+                </div>
 
             </div>
         ) : (
@@ -70,4 +86,19 @@ const mapStateToProps = (state, ownProps) => { //we take a second parameter call
 
 }
 
-export default connect(mapStateToProps)(SinglePost)
+//=====TO DELETE POST, we mapdispatch to the props
+const mapDispatchToProps = (dispatch) => {
+    //we map dispatchTostore like store.dispatch({type: }) but now we have t do it to the props
+
+    return {
+        //we send the delete action and dispatch an action
+        deletePost: (id) => { ///the deletePost will be attached to our props to be used in the component
+            dispatch({ type: 'DELETE_POST', id: id })
+        }
+    }
+
+
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SinglePost)
