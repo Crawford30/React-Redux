@@ -2,26 +2,30 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+//Connecting the component to the redux store
+import { connect } from 'react-redux';
+
 class Home extends Component {
 
     //create a state to store the data
-    state = {
-        posts: []
-    }
+    // state = {
+    //     posts: []
+    // }
 
 
-    componentDidMount() {
-        //this get request is asynchronous, meaning it takes sometime to get the data, and it retrurns a promise,  a promise means the action will complete in some point in time
-        axios.get('https://jsonplaceholder.typicode.com/posts')
-            .then(res => {
-                console.log("RESPOND FROM API ", res);
+    ///========Using the Redux state
+    // componentDidMount() {
+    //     //this get request is asynchronous, meaning it takes sometime to get the data, and it retrurns a promise,  a promise means the action will complete in some point in time
+    //     axios.get('https://jsonplaceholder.typicode.com/posts')
+    //         .then(res => {
+    //             console.log("RESPOND FROM API ", res);
 
-                this.setState({
-                    posts: res.data.slice(0, 10)
-                })
-            })
+    //             this.setState({
+    //                 posts: res.data.slice(0, 10)
+    //             })
+    //         })
 
-    }
+    // }
     render() {
 
         //using destructuring
@@ -34,7 +38,10 @@ class Home extends Component {
         // ......now u see its like we r comparing and setting the term constant to "posts:[ ]"
         // ..destructuring is really handy...
 
-        const { posts } = this.state;
+        // const { posts } = this.state; //Now we get the data from props
+
+        console.log(this.props);
+        const { posts } = this.props;
 
         //Check if we have  post
         const postList = posts.length ? (
@@ -73,8 +80,15 @@ class Home extends Component {
         )
     }
 }
+const mapStateToProps = (state) => { //we pass this in the connect func
+    //it returns an object
+    return {
+        //we call the store states, which in our case is posts( posts(property): state.posts(state))
+        posts: state.posts
+    }
+}
 
-export default Home
+export default connect(mapStateToProps)(Home) //connect is a HOF and itsinvoiking the HOC
 
 
 
